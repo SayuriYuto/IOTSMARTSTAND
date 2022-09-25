@@ -1,7 +1,11 @@
 package com.example.smartstand;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -9,7 +13,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,14 +42,51 @@ public class dashboard extends AppCompatActivity  {
     private ImageView imageViewReset;
     private ImageView imageViewStartStop;
     private CountDownTimer countDownTimer;
+    EditText message;
+    private SharedPreferences preferences;
+    private boolean isAppVisible = true;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.home: {
+                break;
+            }
+//            case R.id.pomodoro:{
+//                Intent i=new Intent(getApplicationContext(),dashboard.class);
+//                startActivity(i);
+//                break;
+//            }
+//            case R.id.timeline:{
+//                Intent i=new Intent(getApplicationContext(),History.class);
+//                startActivity(i);
+//                break;
+//            }
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        // method call to initialize the views
         initViews();
-        // method call to initialize the listeners
         initListeners();
+        isAppVisible = true;
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        toolbar=findViewById(R.id.Toolbar);
+        drawerLayout=findViewById(R.id.drawerLayout);
+        navigationView=findViewById(R.id.navigationView);
+        navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
+        navigationView.bringToFront();
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.nav_open,R.string.nav_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
     }
     private void initViews() {
@@ -49,19 +97,13 @@ public class dashboard extends AppCompatActivity  {
         imageViewStartStop = (ImageView) findViewById(R.id.imageViewStartStop);
     }
 
-    /**
-     * method to initialize the click listeners
-     */
+
     private void initListeners() {
         imageViewReset.setOnClickListener(this::onClick);
         imageViewStartStop.setOnClickListener(this::onClick);
     }
 
-    /**
-     * implemented method to listen clicks
-     *
-     * @param view
-     */
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imageViewReset:
@@ -73,18 +115,14 @@ public class dashboard extends AppCompatActivity  {
         }
     }
 
-    /**
-     * method to reset count down timer
-     */
+
     private void reset() {
         stopCountDownTimer();
         startCountDownTimer();
     }
 
 
-    /**
-     * method to start and stop count down timer
-     */
+
     private void startStop() {
         if (timerStatus == TimerStatus.STOPPED) {
 
@@ -128,9 +166,6 @@ public class dashboard extends AppCompatActivity  {
 
     }
 
-    /**
-     * method to initialize the values for count down timer
-     */
     private void setTimerValues() {
         int time = 0;
         if (!editTextMinute.getText().toString().isEmpty()) {
@@ -144,9 +179,7 @@ public class dashboard extends AppCompatActivity  {
         timeCountInMilliSeconds = time * 60 * 1000;
     }
 
-    /**
-     * method to start count down timer
-     */
+
     private void startCountDownTimer() {
 
         countDownTimer = new CountDownTimer(timeCountInMilliSeconds, 1000) {
@@ -179,16 +212,11 @@ public class dashboard extends AppCompatActivity  {
         countDownTimer.start();
     }
 
-    /**
-     * method to stop count down timer
-     */
+
     private void stopCountDownTimer() {
         countDownTimer.cancel();
     }
 
-    /**
-     * method to set circular progress bar values
-     */
     private void setProgressBarValues() {
 
         progressBarCircle.setMax((int) timeCountInMilliSeconds / 1000);
@@ -196,12 +224,7 @@ public class dashboard extends AppCompatActivity  {
     }
 
 
-    /**
-     * method to convert millisecond to time format
-     *
-     * @param milliSeconds
-     * @return HH:mm:ss time formatted string
-     */
+
     private String hmsTimeFormatter(long milliSeconds) {
 
         String hms = String.format("%02d:%02d:%02d",
