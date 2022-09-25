@@ -20,6 +20,9 @@
             android:name=".landingpage2"
             android:exported="false" />
         <activity
+            android:name=".ToDo"
+            android:exported="false" />
+        <activity
             android:name=".LandingPage1"
             android:exported="false" />
         <activity

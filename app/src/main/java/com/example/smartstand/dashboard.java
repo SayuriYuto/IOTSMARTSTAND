@@ -54,11 +54,11 @@ public class dashboard extends AppCompatActivity  {
             case R.id.home: {
                 break;
             }
-//            case R.id.pomodoro:{
-//                Intent i=new Intent(getApplicationContext(),dashboard.class);
-//                startActivity(i);
-//                break;
-//            }
+            case R.id.todo:{
+                Intent i=new Intent(getApplicationContext(),ToDo.class);
+                startActivity(i);
+                break;
+            }
 //            case R.id.timeline:{
 //                Intent i=new Intent(getApplicationContext(),History.class);
 //                startActivity(i);
