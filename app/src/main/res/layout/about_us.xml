@@ -27,5 +27,57 @@
         android:textSize="19dp"
         tools:layout_editor_absoluteX="177dp"
         tools:layout_editor_absoluteY="348dp" />
+    <TextView
+        android:id="@+id/name1"
+        android:layout_below="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:text="1) Himanshu Bhatia"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="19dp"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="348dp" />
 
+    <TextView
+        android:id="@+id/name2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name1"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="2) Prajwal Kadam    "
+        android:textColor="@color/white"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="348dp" />
+    <TextView
+        android:id="@+id/name3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name2"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="3) Amey Dhuri          "
+        android:textColor="@color/white"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="348dp" />
+    <TextView
+        android:id="@+id/name4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name3"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="4) Shraddha Bagav  "
+        android:textColor="@color/white"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="348dp" />
 </RelativeLayout>
