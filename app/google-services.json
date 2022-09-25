@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "414815728562",
+    "project_id": "studybuddy-28b79",
+    "storage_bucket": "studybuddy-28b79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414815728562:android:984b3365db966ba6d26aab",
+        "android_client_info": {
+          "package_name": "com.example.smartstand"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414815728562-2hu9t14tre54v5a7o4qiq8c9vgo3sqft.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smartstand",
+            "certificate_hash": "e9c0981b1c2a9573cc2f6088a5a616c80c56a3ef"
+          }
+        },
+        {
+          "client_id": "414815728562-u94g4ghbp3b7mq5bagd48ec24tjp8v04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2Wp0dXTHWnKZzlaoXS1r-hwyZVNw9plk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414815728562-u94g4ghbp3b7mq5bagd48ec24tjp8v04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414815728562:android:36cece90e5326b21d26aab",
+        "android_client_info": {
+          "package_name": "com.example.studybuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414815728562-u94g4ghbp3b7mq5bagd48ec24tjp8v04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2Wp0dXTHWnKZzlaoXS1r-hwyZVNw9plk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414815728562-u94g4ghbp3b7mq5bagd48ec24tjp8v04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
