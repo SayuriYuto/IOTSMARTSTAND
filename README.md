@@ -9,7 +9,7 @@ Smart Stand for Mobile devices to assist in focus👨‍💻
 
 # Theme : EdTech
 
-## Authors
+## Developers
 
 - [@Himanshu Bhatia](https://github.com/himanshubhatia2910)
 - [@Prajwal Kadam](https://github.com/prajwalkadam)
