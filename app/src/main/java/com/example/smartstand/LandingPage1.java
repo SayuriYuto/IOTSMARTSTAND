@@ -28,7 +28,7 @@ public class LandingPage1 extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),landingpage2.class);
+                Intent intent=new Intent(getApplicationContext(),dashboard.class);
                 startActivity(intent);
             }
         });

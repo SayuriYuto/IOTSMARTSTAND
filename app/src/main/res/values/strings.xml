@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SmartStand</string>
+    <string name="message_minutes">Please Enter Minutes...</string>
 </resources>
