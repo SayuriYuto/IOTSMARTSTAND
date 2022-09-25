@@ -59,11 +59,11 @@ public class dashboard extends AppCompatActivity  {
                 startActivity(i);
                 break;
             }
-//            case R.id.timeline:{
-//                Intent i=new Intent(getApplicationContext(),History.class);
-//                startActivity(i);
-//                break;
-//            }
+            case R.id.timeline:{
+                Intent i=new Intent(getApplicationContext(),History.class);
+                startActivity(i);
+                break;
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
