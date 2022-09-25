@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="1) Himanshu Bhatia"
         android:layout_marginTop="30dp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         android:textColor="@color/white"
         android:textSize="19dp"
         tools:layout_editor_absoluteX="177dp"
@@ -51,7 +51,7 @@
         android:text="2) Prajwal Kadam    "
         android:textColor="@color/white"
         android:textSize="19dp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         tools:layout_editor_absoluteX="177dp"
         tools:layout_editor_absoluteY="348dp" />
     <TextView
@@ -64,7 +64,7 @@
         android:text="3) Amey Dhuri          "
         android:textColor="@color/white"
         android:textSize="19dp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         tools:layout_editor_absoluteX="177dp"
         tools:layout_editor_absoluteY="348dp" />
     <TextView
@@ -77,7 +77,7 @@
         android:text="4) Shraddha Bagav  "
         android:textColor="@color/white"
         android:textSize="19dp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         tools:layout_editor_absoluteX="177dp"
         tools:layout_editor_absoluteY="348dp" />
 </RelativeLayout>
