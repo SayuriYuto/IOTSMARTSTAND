@@ -76,6 +76,11 @@ public class dashboard extends AppCompatActivity  {
                 startActivity(i);
                 break;
             }
+            case R.id.appTimeline:{
+                Intent i=new Intent(getApplicationContext(),Timeline.class);
+                startActivity(i);
+                break;
+            }
             case R.id.about:{
                 Intent i=new Intent(getApplicationContext(),About.class);
                 startActivity(i);
@@ -237,8 +242,9 @@ public class dashboard extends AppCompatActivity  {
                     String tags = tag.getText().toString();
                     Date date = new Date();
                     Date newDate = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
-                    SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-                    String stringdate = dt.format(newDate);
+                    //dt.format(newDate);
+                    // SimpleDateFormat dt = new SimpleDateFormat("dd-MM-yyyy");
+                    String stringdate =   SimpleDateFormat.getDateInstance().format(new Date());
                     Map<String, Object> timeline = new HashMap<>();
                     timeline.put("time", time);
                     timeline.put("tag", tags);
