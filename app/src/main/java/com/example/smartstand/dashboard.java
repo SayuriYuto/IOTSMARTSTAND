@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 public class dashboard extends AppCompatActivity  {
 
     private long timeCountInMilliSeconds = 1 * 60000;
-
+    private int count=0;
 
     private enum TimerStatus {
         STARTED,
@@ -160,27 +160,7 @@ public class dashboard extends AppCompatActivity  {
                 editTextMinute.setEnabled(false);
                 tag.setEnabled(false);
                 editTextMinute.setVisibility(View.GONE);
-                String time = editTextMinute.getText().toString();
-                String tags = tag.getText().toString();
-                Map<String,Object> timeline = new HashMap<>();
-                timeline.put("time",time);
-                timeline.put("tag",tags);
-                db.collection("timeline")
-                        .add(timeline)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(dashboard.this,"Successful",Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull @NotNull Exception e) {
 
-                                Toast.makeText(dashboard.this,"Failed",Toast.LENGTH_SHORT).show();
-
-
-                            }
-                        });
             }
 
             // changing the timer status to started
@@ -201,6 +181,7 @@ public class dashboard extends AppCompatActivity  {
             // changing the timer status to stopped
             timerStatus = TimerStatus.STOPPED;
             stopCountDownTimer();
+
 
         }
 
@@ -234,7 +215,7 @@ public class dashboard extends AppCompatActivity  {
 
             @Override
             public void onFinish() {
-
+                count++;
                 textViewTime.setText(hmsTimeFormatter(timeCountInMilliSeconds));
                 // call to initialize the progress bar values
                 setProgressBarValues();
@@ -244,12 +225,43 @@ public class dashboard extends AppCompatActivity  {
                 imageViewStartStop.setImageResource(R.drawable.icon_start);
                 // making edit text editable
                 editTextMinute.setEnabled(true);
+                editTextMinute.setVisibility(View.VISIBLE);
+                tag.setEnabled(true);
+                tag.setVisibility(View.VISIBLE);
                 // changing the timer status to stopped
                 timerStatus = TimerStatus.STOPPED;
-            }
+                if(timerStatus== TimerStatus.STOPPED && count==1){
+                    String time = editTextMinute.getText().toString();
+                    String tags = tag.getText().toString();
+                    Map<String, Object> timeline = new HashMap<>();
+                    timeline.put("time", time);
+                    timeline.put("tag", tags);
+                    db.collection("timeline")
+                            .add(timeline)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Toast.makeText(dashboard.this, "Successful", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull @NotNull Exception e) {
+
+                                    Toast.makeText(dashboard.this, "Failed", Toast.LENGTH_SHORT).show();
+
+
+                                }
+                            });
+                }
+
+                }
+
+
 
         }.start();
         countDownTimer.start();
+        count=0;
+
     }
 
 
