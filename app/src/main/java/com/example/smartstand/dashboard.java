@@ -20,8 +20,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class dashboard extends AppCompatActivity  {
@@ -39,6 +47,8 @@ public class dashboard extends AppCompatActivity  {
     private ProgressBar progressBarCircle;
     private EditText editTextMinute;
     private TextView textViewTime;
+    private EditText tag;
+    FirebaseFirestore db;
     private ImageView imageViewReset;
     private ImageView imageViewStartStop;
     private CountDownTimer countDownTimer;
@@ -78,12 +88,14 @@ public class dashboard extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        db = FirebaseFirestore.getInstance();
         initViews();
         initListeners();
         isAppVisible = true;
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         toolbar=findViewById(R.id.Toolbar);
         drawerLayout=findViewById(R.id.drawerLayout);
+        tag=findViewById(R.id.enter);
         navigationView=findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this::onNavigationItemSelected);
         navigationView.bringToFront();
@@ -146,7 +158,29 @@ public class dashboard extends AppCompatActivity  {
             }
             else{
                 editTextMinute.setEnabled(false);
+                tag.setEnabled(false);
                 editTextMinute.setVisibility(View.GONE);
+                String time = editTextMinute.getText().toString();
+                String tags = tag.getText().toString();
+                Map<String,Object> timeline = new HashMap<>();
+                timeline.put("time",time);
+                timeline.put("tag",tags);
+                db.collection("timeline")
+                        .add(timeline)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Toast.makeText(dashboard.this,"Successful",Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+
+                                Toast.makeText(dashboard.this,"Failed",Toast.LENGTH_SHORT).show();
+
+
+                            }
+                        });
             }
 
             // changing the timer status to started
@@ -163,6 +197,7 @@ public class dashboard extends AppCompatActivity  {
             imageViewStartStop.setImageResource(R.drawable.icon_start);
             // making edit text editable
             editTextMinute.setEnabled(true);
+            tag.setEnabled(true);
             // changing the timer status to stopped
             timerStatus = TimerStatus.STOPPED;
             stopCountDownTimer();
