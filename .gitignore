@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+hardware/smartstand/secretkeys.h
+hardware/smartstand/ignorefiles
