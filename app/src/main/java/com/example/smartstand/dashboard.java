@@ -28,6 +28,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -233,9 +235,14 @@ public class dashboard extends AppCompatActivity  {
                 if(timerStatus== TimerStatus.STOPPED && count==1){
                     String time = editTextMinute.getText().toString();
                     String tags = tag.getText().toString();
+                    Date date = new Date();
+                    Date newDate = new Date(date.getTime() + (604800000L * 2) + (24 * 60 * 60));
+                    SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+                    String stringdate = dt.format(newDate);
                     Map<String, Object> timeline = new HashMap<>();
                     timeline.put("time", time);
                     timeline.put("tag", tags);
+                    timeline.put("date",stringdate);
                     db.collection("timeline")
                             .add(timeline)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -285,7 +292,6 @@ public class dashboard extends AppCompatActivity  {
                 TimeUnit.MILLISECONDS.toSeconds(milliSeconds) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(milliSeconds)));
 
         return hms;
-
 
     }
 
