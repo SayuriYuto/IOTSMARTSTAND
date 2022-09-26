@@ -22,6 +22,10 @@
             android:icon="@drawable/ic_baseline_timeline_24"
             android:title="Timeline" />
         <item
+            android:id="@+id/appTimeline"
+            android:icon="@drawable/ic_baseline_timeline_24"
+            android:title="App Timeline" />
+        <item
             android:id="@+id/about"
             android:icon="@drawable/ic_baseline_people_24"
             android:title="About Us" />

@@ -29,6 +29,9 @@
             android:name=".LandingPage1"
             android:exported="false" />
         <activity
+            android:name=".Timeline"
+            android:exported="false" />
+        <activity
             android:name=".About"
             android:exported="false" />
         <activity
