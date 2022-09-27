@@ -2,7 +2,7 @@
 # DEVCUP 2022🏆
 
 # StudyBuddy
-Smart Stand for Mobile devices to assist in focus👨‍💻
+IOT enabled Smart Stand for Mobile devices to assist in focus👨‍💻
 
 Team Name : </Reboot Rebels>🔥
 
