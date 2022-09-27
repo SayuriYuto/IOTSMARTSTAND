@@ -1,5 +1,5 @@
 
-# DEVCUP 2022 
+# DEVCUP 2022🏆
 
 # StudyBuddy
 Smart Stand for Mobile devices to assist in focus👨‍💻
