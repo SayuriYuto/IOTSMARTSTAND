@@ -4,7 +4,7 @@
 # StudyBuddy
 Smart Stand for Mobile devices to assist in focus👨‍💻
 
-Team Name : <Reboot Rebels/>​🔥
+Team Name : <Reboot Rebels/>🔥
 
 Team no : 15
 
