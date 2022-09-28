@@ -14,6 +14,10 @@
 <!--            android:icon="@drawable/ic_baseline_timer_24"-->
 <!--            android:title="Timer Mode" />-->
         <item
+            android:id="@+id/pomodoro"
+            android:icon="@drawable/deadline"
+            android:title="Pomodoro Mode" />
+        <item
             android:id="@+id/todo"
             android:icon="@drawable/ic_baseline_edit_24"
             android:title="To-do List" />

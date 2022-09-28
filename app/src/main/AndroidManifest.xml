@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.smartstand">
 
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission
+        android:name="android.permission.VIBRATE"
+        tools:ignore="ManifestOrder" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".Pomodoro"
+            android:exported="false" />
         <activity
             android:name=".landingpage3"
             android:exported="false" />

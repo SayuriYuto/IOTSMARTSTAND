@@ -76,6 +76,11 @@ public class dashboard extends AppCompatActivity  {
                 startActivity(i);
                 break;
             }
+            case R.id.pomodoro:{
+                Intent i=new Intent(getApplicationContext(),Pomodoro.class);
+                startActivity(i);
+                break;
+            }
             case R.id.appTimeline:{
                 Intent i=new Intent(getApplicationContext(),Timeline.class);
                 startActivity(i);
