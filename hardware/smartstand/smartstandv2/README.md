@@ -9,3 +9,10 @@ query.set("select/fields/fieldPath", "task");
 query.set("from/collectionId", "task");
 query.set("from/allDescendants", true);
 query.set("limit", 1);
+
+using firebaseJson library to parse json
+very complicated
+
+got into json 
+
+finally fucking done
