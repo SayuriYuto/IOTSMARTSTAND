@@ -105,6 +105,13 @@ void loop()
       Serial.println("\n---------");
     Serial.println(str);
     Serial.println(result.to<String>());
+    FirebaseJson json2;
+    FirebaseJsonData result2;
+    json2.setJsonData(result.to<String>());
+    json2.get(result2,"document/fields/task/stringValue");
+    Serial.println(result2.to<String>());
+//    json2.get(result2 /* FirebaseJsonData */, "document" /* key or path */,true);
+    
             }
         else
             Serial.println(fbdo.errorReason());
