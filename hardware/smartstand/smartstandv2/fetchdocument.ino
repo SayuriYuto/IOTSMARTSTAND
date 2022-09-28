@@ -24,9 +24,15 @@
 // Provide the token generation process info.
 #include <addons/TokenHelper.h>
 
+
+// Define Firebase Data object
 FirebaseData fbdo;
+FirebaseJson query;
 FirebaseAuth auth;
 FirebaseConfig config;
+FirebaseJson json;       // or constructor with contents e.g. FirebaseJson json("{\"a\":true}");
+FirebaseJsonArray arr;   // or constructor with contents e.g. FirebaseJsonArray arr("[1,2,true,\"test\"]");
+FirebaseJsonData result; //object that keeps the deserializing result
 
 unsigned long dataMillis = 0;
 int count = 0;
@@ -81,7 +87,7 @@ void loop()
         dataMillis = millis();
 
         Serial.print("Query a Firestore database... ");
-        FirebaseJson query;
+        
 
         query.set("select/fields/fieldPath", "task");
         query.set("from/collectionId", "task");
@@ -89,7 +95,20 @@ void loop()
         query.set("limit", 1);
 
         if (Firebase.Firestore.runQuery(&fbdo, FIREBASE_PROJECT_ID, "" /* databaseId can be (default) or empty */, "" /* The document path */, &query /* The FirebaseJson object holds the StructuredQuery data */))
-            Serial.printf("ok\n%s\n\n", fbdo.payload().c_str());
+            {
+              Serial.printf("ok\n%s\n\n", fbdo.payload().c_str());
+              arr.setJsonArrayData(fbdo.payload());
+              arr.get(result,0);
+              String str;
+              arr.toString(str, true /* prettify option */);
+              json.setJsonData(str);
+              json.get(result,"document/fields/task");
+              
+
+      Serial.println("\n---------");
+Serial.println("\n---------");
+    Serial.println(result.to<String>());
+    Serial.println(result.to<String>().c_str());
         else
             Serial.println(fbdo.errorReason());
     }
