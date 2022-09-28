@@ -101,14 +101,11 @@ void loop()
               arr.get(result,0);
               String str;
               arr.toString(str, true /* prettify option */);
-              json.setJsonData(str);
-              json.get(result,"document/fields/task");
-              
 
       Serial.println("\n---------");
-Serial.println("\n---------");
+    Serial.println(str);
     Serial.println(result.to<String>());
-    Serial.println(result.to<String>().c_str());
+            }
         else
             Serial.println(fbdo.errorReason());
     }
